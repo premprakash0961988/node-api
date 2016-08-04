@@ -20,16 +20,10 @@ var con = mysql.createConnection({
   password: "123456",
   database: "test3aug"
 });
-con.connect(function(err){
-  if(err){
-    console.log('Error connecting to Db');
-    return;
-  }
-  console.log('Connection established');
-});
 
-con.query(select * from table_prem, fun(error, rows) {
-  if (err) throw err;
+
+con.query(select * from table_prem, fun(error, row) {
+  if (error) throw error;
 
   console.log('Data recevied : \n');
   console.log(row);
