@@ -18,7 +18,7 @@ var con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "123456",
-  database: "table_prem"
+  database: "test3aug"
 });
 con.connect(function(err){
   if(err){
@@ -26,4 +26,11 @@ con.connect(function(err){
     return;
   }
   console.log('Connection established');
+});
+
+con.query(select * from table_prem, fun(error, rows) {
+  if (err) throw err;
+
+  console.log('Data recevied : \n');
+  console.log(row);
 });
