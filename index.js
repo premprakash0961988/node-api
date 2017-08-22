@@ -1,5 +1,9 @@
 var express = require("express");
-var app =  express();
+var cors = require('cors')
+var app = express()
+
+app.use(cors())
+
 
 var node1 = require("./index1.js")(app);
 var node2 = require("./index2.js");
