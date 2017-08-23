@@ -72,12 +72,11 @@ var refreshData = function(app){
 		  	}
 
 		  		  		
-		  	db.collection(req.query.collection).insertMany(objects, function(err, res) {
+		  	db.collection("categories").insertMany(objects, function(err, res) {
 		    if (err) throw err;
 		    
 		  	});
 		  	db.close();
-
 		});
 	  
 	  })
@@ -139,7 +138,7 @@ var fetchCategoryData = function(app){
 
 
 	  	var collection = db.collection("categories");	
-	  	let categoryName = req.query.collection;
+	  	let categoryName = req.query.category;
 	  	  
 		collection.find({resourceName:categoryName},{"get":1}).toArray(function(err, items) {
          let url = items[0].get;
@@ -165,6 +164,7 @@ var fetchCategoryData = function(app){
 	  	for (var i in obj.productInfoList) {
 	  		var data = obj.productInfoList[i];
 	  		console.log(data)
+	  		data["category"] = categoryName;
 	  		objects.push(data)
 		  	}
 		  		  		
